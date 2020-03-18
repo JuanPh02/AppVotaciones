@@ -6,16 +6,16 @@ import android.widget.ImageView;
 
 public class Candidato {
 
-    private Uri path;
+    private String path;
     private Bitmap bmp;
     private String dni;
     private String nombres;
     private String apellidos;
     private String partido;
 
-    public Candidato(Bitmap bmp, String dni, String nombres, String apellidos, String partido){
-        //this.path = path;
-        this.bmp = bmp;
+    public Candidato(String path, String dni, String nombres, String apellidos, String partido){
+        this.path = path;
+        //this.bmp = bmp;
         this.dni = dni;
         this.nombres = nombres;
         this.apellidos = apellidos;
@@ -27,7 +27,7 @@ public class Candidato {
         return dni;
     }
 
-    public Uri getPath() {
+    public String getPath() {
         return path;
     }
 

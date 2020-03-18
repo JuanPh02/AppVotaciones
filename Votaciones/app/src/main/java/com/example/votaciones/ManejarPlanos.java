@@ -23,10 +23,10 @@ public class ManejarPlanos {
         this.ctx = ctx;
     }
 
-    public void addCandidato(String archivo, Bitmap bmp, String dni, String nombre, String apellidos, String partido) {
+    public void addCandidato(String archivo, String path, String dni, String nombre, String apellidos, String partido) {
         try {
             fos = ctx.openFileOutput(archivo, Context.MODE_APPEND);
-            String newTextLine = bmp.toString() + '\n' + dni + '\n' + nombre + '\n' + apellidos + '\n' + partido ;
+            String newTextLine = path + '\n' + dni + '\n' + nombre + '\n' + apellidos + '\n' + partido ;
             fos.write(newTextLine.getBytes());
             fos.write('\n');
             fos.close();
@@ -66,9 +66,8 @@ public class ManejarPlanos {
         ArrayList<Candidato> lstCandidatos = new ArrayList<>();
         int i = 1;
         int cont = 0;
-        Uri path  = null;
         Bitmap bmp = null;
-        String  dni="", nombres = "", apellidos = "", partido = "", lectura = "";
+        String  path = "", dni="", nombres = "", apellidos = "", partido = "", lectura = "";
         char caracter;
         try {
             fis = ctx.openFileInput(archivo);
@@ -79,8 +78,8 @@ public class ManejarPlanos {
                 if (i == '\n') {
                     switch (cont) {
                         case 0:
-                            //path = Uri.parse(lectura);
-                            bmp = StringToBitMap(lectura.trim());
+                            path = lectura.trim();
+                            //bmp = StringToBitMap(lectura.trim());
                             break;
                         case 1:
                             dni = lectura.trim();
@@ -94,7 +93,7 @@ public class ManejarPlanos {
                         case 4:
                             partido = lectura.trim();
                             cont = -1;
-                            lstCandidatos.add(new Candidato(bmp, dni, nombres, apellidos, partido));
+                            lstCandidatos.add(new Candidato(path, dni, nombres, apellidos, partido));
                             break;
                     }
                     lectura = "";

@@ -71,19 +71,15 @@ public class ListViewAdapter extends BaseAdapter {
         tvDni = itemView.findViewById(R.id.tvDni);
         tvPartido = itemView.findViewById(R.id.tvPartido);
 
-        /*if(lstCandidatos.get(position).getPath().toString().trim().equals("null")) {
-            imgCandidato.setImageResource(R.drawable.ico_votob);
-        } else {
-            imgCandidato.setImageURI(lstCandidatos.get(position).getPath());
-        }
-       // imgCandidato.setImageResource(R.drawable.ico_votob);*/
         if(lstCandidatos.get(position).getNombres().equals("Voto en Blanco")) {
             imgCandidato.setImageResource(R.drawable.ico_votob);
         } else {
-            //imgCandidato.setImageURI(lstCandidatos.get(position).getPath());
-            //imgCandidato.setImageBitmap(lstCandidatos.get(position).getBmp());
+            File imgFile = new File(lstCandidatos.get(position).getPath());
+            if(imgFile.exists()){
+                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+                imgCandidato.setImageBitmap(myBitmap);
+            }
         }
-
 
         tvNombre.setText(lstCandidatos.get(position).getNombres() + " " + lstCandidatos.get(position).getApellidos());
         tvDni.setText(lstCandidatos.get(position).getDni());

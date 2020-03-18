@@ -25,7 +25,9 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 
@@ -47,10 +49,11 @@ public class Candidatos extends Fragment {
     EditText etDni, etNombres, etApellidos, etPartido;
     Button btnImage, btnAddCandidato;
     View view;
-    Uri path;
+    File imgFile;
+    String pathImage;
     Bitmap bmp;
     ArrayList<Candidato> lstCandidatos;
-
+    int PICK_IMAGE_REQUEST=1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -87,7 +90,7 @@ public class Candidatos extends Fragment {
                 partido = etPartido.getText().toString();
                 lstCandidatos = manejarPlanos.leerCandidatos(archCandidatos);
                 if(!existeCandidato(dni)){
-                    manejarPlanos.addCandidato(archCandidatos,bmp,dni,nombres,apellidos,partido);
+                    manejarPlanos.addCandidato(archCandidatos,pathImage,dni,nombres,apellidos,partido);
                     resetCampos();
                 } else {
                     Toast.makeText(getContext(),"Ya existe un candidato con ese DNI",Toast.LENGTH_SHORT).show();
@@ -120,21 +123,34 @@ public class Candidatos extends Fragment {
     @Override
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == RESULT_OK){
-            Uri path = data.getData();
-
-            InputStream pictureInputStream;
-            try{
-                pictureInputStream = getContext().getContentResolver().openInputStream(path);
-                bmp = BitmapFactory.decodeStream(pictureInputStream);
-                imgPerfil.setImageBitmap(bmp);
+        if(resultCode == RESULT_OK) {
+            Uri uri = data.getData();
+            pathImage = getPath(uri);
+            //Toast.makeText(getContext(), "Path : " + pathImage, Toast.LENGTH_SHORT).show();
+            imgFile = new File(pathImage);
+            if(imgFile.exists()){
+                Bitmap myBitmap = BitmapFactory.decodeFile(imgFile.getAbsolutePath());
+                imgPerfil.setImageBitmap(myBitmap);
                 btnImage.setText("");
-            } catch (FileNotFoundException e) {
-                e.printStackTrace();
             }
-
-            //imgPerfil.setImageURI(path);
         }
+    }
+
+    public String getPath(Uri uri) {
+        Cursor cursor = getContext().getContentResolver().query(uri, null, null, null, null);
+        cursor.moveToFirst();
+        String document_id = cursor.getString(0);
+        document_id = document_id.substring(document_id.lastIndexOf(":") + 1);
+        cursor.close();
+
+        cursor = getContext().getContentResolver().query(
+                android.provider.MediaStore.Images.Media.EXTERNAL_CONTENT_URI,
+                null, MediaStore.Images.Media._ID + " = ? ", new String[]{document_id}, null);
+        cursor.moveToFirst();
+        String path = cursor.getString(cursor.getColumnIndex(MediaStore.Images.Media.DATA));
+        cursor.close();
+
+        return path;
     }
 
     public static String getRealPath(final Context context, final Uri uri) {
