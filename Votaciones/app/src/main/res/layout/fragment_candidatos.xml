@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:paddingRight="5dp"
+    android:paddingLeft="5dp"
+    tools:context=".Candidatos">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:layout_marginTop="20dp"
+        android:text="NUEVO CANDIDATO"></TextView>
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp">
+
+        <Button
+            android:id="@+id/btnImage"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="135dp"
+            android:layout_marginRight="100dp"
+            android:gravity="center_horizontal"
+            android:textAlignment="center"
+            android:background="@android:color/transparent"
+            android:text="seleccionar imagen del candidato"></Button>
+
+        <ImageView
+            android:id="@+id/imgPerfil"
+            android:src="@drawable/img_start"
+            android:layout_width="150dp"
+            android:layout_height="150dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="135dp"
+            android:layout_marginRight="100dp"
+            android:layout_gravity="center_horizontal"></ImageView>
+
+    </RelativeLayout>
+
+    <EditText
+        android:id="@+id/etDni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="DNI"
+        android:layout_marginTop="50dp"
+        android:singleLine="true"
+        android:inputType="number"
+        android:textAlignment="center"></EditText>
+
+    <EditText
+        android:id="@+id/etNombres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombres"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
+        android:textAlignment="center"></EditText>
+
+    <EditText
+        android:id="@+id/etApellidos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Apellidos"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
+        android:textAlignment="center"></EditText>
+
+    <EditText
+        android:id="@+id/etPartido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Partido político"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
+        android:textAlignment="center"></EditText>
+
+    <Button
+        android:id="@+id/btnAddCandidato"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="Añadir Candidato"></Button>
+</LinearLayout>

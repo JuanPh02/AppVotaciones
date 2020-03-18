@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
+    android:id="@+id/fragmVotar"
+    tools:context=".Votar">
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text=""
+        android:gravity="center_horizontal"></TextView>
+
+    <TextView
+        android:id="@+id/tvInfoVotacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="INGRESO VOTANTE"
+        android:gravity="center_horizontal"></TextView>
+
+    <EditText
+        android:id="@+id/etDniVot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
+        android:inputType="number"
+        android:hint="Dni"
+        android:textAlignment="center"></EditText>
+
+    <Button
+        android:id="@+id/btnIrAVotacion"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Ir a votacion"></Button>
+
+    <ListView
+        android:id="@+id/lvCandidatos"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="invisible"></ListView>
+
+</LinearLayout>

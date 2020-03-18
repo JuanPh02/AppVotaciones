@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:padding="5dip" >
+
+    <LinearLayout
+        android:id="@+id/thumbnail"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="3dp"
+        android:layout_alignParentLeft="true"
+        android:layout_marginRight="5dp">
+
+        <ImageView
+            android:id="@+id/imgCandidatolst"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:src="@drawable/ico_votob"></ImageView>
+
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/tvNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:text="Nombre - Apellido"
+        android:textSize="18dp" ></TextView>
+
+    <TextView
+        android:id="@+id/tvDni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="25dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:layout_below="@id/tvNombre"
+        android:text="Dni"
+        android:textSize="18dp"></TextView>
+
+    <TextView
+        android:id="@+id/tvPartido"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/tvDni"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="4dp"
+        android:layout_toRightOf="@+id/thumbnail"
+        android:text="Partido Politico"
+        android:textSize="18dp"></TextView>
+
+</RelativeLayout>

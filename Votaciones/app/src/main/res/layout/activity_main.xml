@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:id="@+id/llPrincipal"
+    android:orientation="vertical">
+
+    <com.google.android.material.tabs.TabLayout
+        android:id="@+id/tblMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabCandidato"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CANDIDATO"
+            android:icon="@drawable/ico_candidato"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabVotante"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:text="VOTANTE"
+            android:icon="@drawable/ico_votante"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabVotar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="VOTAR"
+            android:icon="@drawable/ico_urna"/>
+
+        <com.google.android.material.tabs.TabItem
+            android:id="@+id/tabCierre"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="CIERRE"
+            android:icon="@drawable/ico_resultados"/>
+
+    </com.google.android.material.tabs.TabLayout>
+
+    <androidx.viewpager.widget.ViewPager
+        android:id="@+id/viewpager"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"></androidx.viewpager.widget.ViewPager>
+</LinearLayout>

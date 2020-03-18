@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Votantes">
+
+    <TextView
+        android:id="@+id/tvNuevoCand"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:gravity="center_horizontal"
+        android:layout_marginTop="20dp"
+        android:text="NUEVO VOTANTE"></TextView>
+
+    <ImageView
+        android:src="@drawable/ico_cc"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="20dp"
+        android:layout_gravity="center_horizontal"></ImageView>
+
+    <EditText
+        android:id="@+id/etDni"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="DNI"
+        android:layout_marginTop="40dp"
+        android:singleLine="true"
+        android:inputType="number"
+        android:textAlignment="center"></EditText>
+
+    <EditText
+        android:id="@+id/etNombres"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombres"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
+        android:textAlignment="center"></EditText>
+
+    <EditText
+        android:id="@+id/etApellidos"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Apellidos"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
+        android:textAlignment="center"></EditText>
+
+    <EditText
+        android:id="@+id/etTelefono"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Telefono"
+        android:layout_marginTop="10dp"
+        android:singleLine="true"
+        android:inputType="number"
+        android:textAlignment="center"></EditText>
+
+    <Button
+        android:id="@+id/btnAddVotante"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="48dp"
+        android:text="Añadir Votante"></Button>
+
+</LinearLayout>
