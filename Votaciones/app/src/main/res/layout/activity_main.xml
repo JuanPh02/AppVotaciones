@@ -11,6 +11,8 @@
     <com.google.android.material.tabs.TabLayout
         android:id="@+id/tblMenu"
         android:layout_width="match_parent"
+        android:fontFamily="@font/contrail_one"
+        app:tabTextColor="@color/blue"
         android:layout_height="wrap_content">
 
         <com.google.android.material.tabs.TabItem

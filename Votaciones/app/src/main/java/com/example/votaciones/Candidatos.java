@@ -51,9 +51,7 @@ public class Candidatos extends Fragment {
     View view;
     File imgFile;
     String pathImage;
-    Bitmap bmp;
     ArrayList<Candidato> lstCandidatos;
-    int PICK_IMAGE_REQUEST=1;
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -89,16 +87,20 @@ public class Candidatos extends Fragment {
                 apellidos = etApellidos.getText().toString();
                 partido = etPartido.getText().toString();
                 lstCandidatos = manejarPlanos.leerCandidatos(archCandidatos);
-                if(!existeCandidato(dni)){
-                    manejarPlanos.addCandidato(archCandidatos,pathImage,dni,nombres,apellidos,partido);
-                    resetCampos();
+                if(dni.isEmpty() || nombres.isEmpty() || apellidos.isEmpty() ||
+                        partido.isEmpty() || btnImage.getText().equals("seleccionar imagen del candidato")) {
+                    Toast.makeText(getContext(),"Ingrese todos los datos requeridos",Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getContext(),"Ya existe un candidato con ese DNI",Toast.LENGTH_SHORT).show();
-                    etDni.setText("");
+                    if(!existeCandidato(dni)){
+                        manejarPlanos.addCandidato(archCandidatos,pathImage,dni,nombres,apellidos,partido);
+                        resetCampos();
+                    } else {
+                        Toast.makeText(getContext(),"Ya existe un candidato con ese DNI",Toast.LENGTH_SHORT).show();
+                        etDni.setText("");
+                    }
                 }
             }
         });
-
         return view;
     }
 
@@ -151,111 +153,5 @@ public class Candidatos extends Fragment {
         cursor.close();
 
         return path;
-    }
-
-    public static String getRealPath(final Context context, final Uri uri) {
-
-        if (uri.getScheme().equals("file")) {
-            return uri.toString();
-
-        } else if (uri.getScheme().equals("content")) {
-            // DocumentProvider
-            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-                if (DocumentsContract.isDocumentUri(context, uri)) {
-
-                    // ExternalStorageProvider
-                    if (isExternalStorageDocument(uri)) {
-                        final String docId = DocumentsContract.getDocumentId(uri);
-                        final String[] split = docId.split(":");
-                        final String type = split[0];
-
-                        if ("primary".equalsIgnoreCase(type)) {
-                            return Environment.getExternalStorageDirectory() + "/" + split[1];
-                        }
-
-                        // TODO handle non-primary volumes
-                    }
-                    // DownloadsProvider
-                    else if (isDownloadsDocument(uri)) {
-
-                        final String id = DocumentsContract.getDocumentId(uri);
-                        final Uri contentUri = ContentUris.withAppendedId(
-                                Uri.parse("content://downloads/public_downloads"), Long.valueOf(id));
-
-                        return getDataColumn(context, contentUri, null, null);
-                    }
-                    // MediaProvider
-                    else if (isMediaDocument(uri)) {
-                        final String docId = DocumentsContract.getDocumentId(uri);
-                        final String[] split = docId.split(":");
-                        final String type = split[0];
-
-                        Uri contentUri = null;
-                        if ("image".equals(type)) {
-                            contentUri = MediaStore.Images.Media.EXTERNAL_CONTENT_URI;
-                        } else if ("video".equals(type)) {
-                            contentUri = MediaStore.Video.Media.EXTERNAL_CONTENT_URI;
-                        } else if ("audio".equals(type)) {
-                            contentUri = MediaStore.Audio.Media.EXTERNAL_CONTENT_URI;
-                        }
-
-                        final String selection = "_id=?";
-                        final String[] selectionArgs = new String[]{
-                                split[1]
-                        };
-
-                        return getDataColumn(context, contentUri, selection, selectionArgs);
-                    }
-                }
-            }
-    /*
-    // MediaStore (and general)
-    else if ("content".equalsIgnoreCase(uri.getScheme())) {
-        return getDataColumn(context, uri, null, null);
-    }
-    // File
-    else if ("file".equalsIgnoreCase(uri.getScheme())) {
-        return uri.getPath();
-    }*/
-        }
-
-        return null;
-    }
-
-
-    public static String getDataColumn(Context context, Uri uri, String selection,
-                                       String[] selectionArgs) {
-
-        Cursor cursor = null;
-        final String column = "_data";
-        final String[] projection = {
-                column
-        };
-
-        try {
-            cursor = context.getContentResolver().query(uri, projection, selection, selectionArgs,
-                    null);
-            if (cursor != null && cursor.moveToFirst()) {
-                final int column_index = cursor.getColumnIndexOrThrow(column);
-                return cursor.getString(column_index);
-            }
-        } finally {
-            if (cursor != null)
-                cursor.close();
-        }
-        return null;
-    }
-
-
-    public static boolean isExternalStorageDocument(Uri uri) {
-        return "com.android.externalstorage.documents".equals(uri.getAuthority());
-    }
-
-    public static boolean isDownloadsDocument(Uri uri) {
-        return "com.android.providers.downloads.documents".equals(uri.getAuthority());
-    }
-
-    public static boolean isMediaDocument(Uri uri) {
-        return "com.android.providers.media.documents".equals(uri.getAuthority());
     }
 }

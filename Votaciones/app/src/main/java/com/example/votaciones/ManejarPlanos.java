@@ -79,7 +79,6 @@ public class ManejarPlanos {
                     switch (cont) {
                         case 0:
                             path = lectura.trim();
-                            //bmp = StringToBitMap(lectura.trim());
                             break;
                         case 1:
                             dni = lectura.trim();

@@ -7,7 +7,6 @@ import android.widget.ImageView;
 public class Candidato {
 
     private String path;
-    private Bitmap bmp;
     private String dni;
     private String nombres;
     private String apellidos;
@@ -41,9 +40,5 @@ public class Candidato {
 
     public String getPartido() {
         return partido;
-    }
-
-    public Bitmap getBmp() {
-        return bmp;
     }
 }

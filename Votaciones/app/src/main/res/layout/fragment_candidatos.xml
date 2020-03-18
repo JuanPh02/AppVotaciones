@@ -11,9 +11,12 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
         android:layout_marginTop="20dp"
-        android:text="NUEVO CANDIDATO"></TextView>
+        android:fontFamily="@font/aldrich"
+        android:text="NUEVO CANDIDATO"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="18sp"></TextView>
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -86,5 +89,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="50dp"
+        android:fontFamily="@font/aldrich"
+        android:textColor="@color/blue"
         android:text="Añadir Candidato"></Button>
 </LinearLayout>

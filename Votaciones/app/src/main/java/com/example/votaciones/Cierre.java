@@ -198,7 +198,7 @@ public class Cierre extends Fragment {
     }
 
     public void crearGrafico() {
-        grafico = (BarChart) getSameChart(grafico,"Votos",Color.RED, Color.CYAN,3500);
+        grafico = (BarChart) getSameChart(grafico,"Votos",Color.RED, Color.TRANSPARENT,3500);
         grafico.setDrawGridBackground(true);
         grafico.setDrawBarShadow(true);
         grafico.setData(getBarData());

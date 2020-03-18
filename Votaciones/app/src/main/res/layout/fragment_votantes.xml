@@ -10,10 +10,13 @@
         android:id="@+id/tvNuevoCand"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textAlignment="center"
-        android:gravity="center_horizontal"
         android:layout_marginTop="20dp"
-        android:text="NUEVO VOTANTE"></TextView>
+        android:fontFamily="@font/aldrich"
+        android:gravity="center_horizontal"
+        android:text="NUEVO VOTANTE"
+        android:textAlignment="center"
+        android:textColor="@color/blue"
+        android:textSize="18sp"></TextView>
 
     <ImageView
         android:src="@drawable/ico_cc"
@@ -65,6 +68,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="48dp"
-        android:text="Añadir Votante"></Button>
+        android:text="Añadir Votante"
+        android:fontFamily="@font/aldrich"
+        android:textColor="@color/blue"></Button>
 
 </LinearLayout>

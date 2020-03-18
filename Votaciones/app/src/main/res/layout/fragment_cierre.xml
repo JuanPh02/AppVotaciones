@@ -11,16 +11,20 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Cierre y Resultados de Votación"
+        android:text="CIERRE Y RESULTADOS DE VOTACIÓN"
         android:layout_marginTop="10dp"
-        android:textSize="16sp"
-        android:textColor="@android:color/black"
+        android:textColor="@color/blue"
+        android:fontFamily="@font/aldrich"
+        android:textSize="18sp"
         android:gravity="center_horizontal"></TextView>
 
     <Button
         android:id="@+id/btnCerrarVot"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:textColor="@color/blue"
+        android:fontFamily="@font/aldrich"
+        android:layout_marginTop="15dp"
         android:text="Cerrar Votaciones"></Button>
 
     <TextView

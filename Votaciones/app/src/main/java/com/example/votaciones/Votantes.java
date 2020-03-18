@@ -52,12 +52,16 @@ public class Votantes extends Fragment {
                 apellidos = etApellidos.getText().toString();
                 telefono = etTelefono.getText().toString();
                 lstVotantes = manejarPlanos.leerVotantes(archVotantes);
-                if(!existeVotante(dni)){
-                    manejarPlanos.addVotante(archVotantes,dni,nombres,apellidos,telefono);
-                    resetCampos();
+                if(dni.isEmpty() || nombres.isEmpty() || apellidos.isEmpty() || telefono.isEmpty()){
+                    Toast.makeText(getContext(),"Ingrese todos los datos requeridos",Toast.LENGTH_SHORT).show();
                 } else {
-                    Toast.makeText(getContext(),"Ya existe un votante con ese DNI",Toast.LENGTH_SHORT).show();
-                    etDni.setText("");
+                    if(!existeVotante(dni)){
+                        manejarPlanos.addVotante(archVotantes,dni,nombres,apellidos,telefono);
+                        resetCampos();
+                    } else {
+                        Toast.makeText(getContext(),"Ya existe un votante con ese DNI",Toast.LENGTH_SHORT).show();
+                        etDni.setText("");
+                    }
                 }
             }
         });

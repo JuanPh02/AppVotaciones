@@ -28,16 +28,20 @@
         android:layout_marginLeft="25dp"
         android:layout_toRightOf="@+id/thumbnail"
         android:text="Nombre - Apellido"
-        android:textSize="18dp" ></TextView>
+        android:fontFamily="@font/contrail_one"
+        android:textColor="@android:color/black"
+        android:textSize="20dp"></TextView>
 
     <TextView
         android:id="@+id/tvDni"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_below="@id/tvNombre"
         android:layout_marginLeft="25dp"
         android:layout_toRightOf="@+id/thumbnail"
-        android:layout_below="@id/tvNombre"
+        android:fontFamily="@font/contrail_one"
         android:text="Dni"
+        android:textColor="@color/gray"
         android:textSize="18dp"></TextView>
 
     <TextView
@@ -48,7 +52,9 @@
         android:layout_marginLeft="25dp"
         android:layout_marginTop="4dp"
         android:layout_toRightOf="@+id/thumbnail"
+        android:fontFamily="@font/contrail_one"
         android:text="Partido Politico"
+        android:textColor="@color/gray"
         android:textSize="18dp"></TextView>
 
 </RelativeLayout>
